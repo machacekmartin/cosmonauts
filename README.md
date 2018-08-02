@@ -22,6 +22,8 @@ New project - started building with Google's Firebase - beautiful thing when und
 
 Most of the functions and main variables for controlling the table is in file cosmonauts service
 
+Had the best time of my coding life, I had to say.
+
 
 
 # CosmonautsJob
