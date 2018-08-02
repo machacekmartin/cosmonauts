@@ -9,7 +9,7 @@ import { CosmonautsService } from './cosmonauts.service'
 })
 export class CosmonautsComponent implements OnInit {
 
-  constructor(private service: CosmonautsService) { }
+  constructor(public service: CosmonautsService) { }
   
   // This is needed for the table data
   // just calls the GET functions from the service, accessing firebase
