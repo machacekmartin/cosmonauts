@@ -6,7 +6,8 @@ Database used - Firebase - realtime updates in the cosmonauts table
 I did every input as a string text, so birthdate input can be anything.
 Input type Date is good, but in some browsers, it sucks, so I sticked with input type Text
 
-I hope you like it
+I hope you like it.
+
 Design of this "page" was done before anything else in Adobe XD
 After Design in XD, I moved on to the functionality of the website.
 When I was done with functionality, it was time for my favourite - css (scss)
