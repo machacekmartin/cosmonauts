@@ -19,6 +19,7 @@ After many many videos and tutorials on how to do it the way I wanted, came the 
 So kept SCSS files, most of HTML files and everything else had to go away.
 
 New project - started building with Google's Firebase - beautiful thing when understood right.
+
 Most of the functions and main variables for controlling the table is in file cosmonauts service
 
 
