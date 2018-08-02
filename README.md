@@ -14,7 +14,7 @@ After Design in XD, I moved on to the functionality of the website.
 When I was done with functionality, it was time for my favourite - css (scss)
 
 After I thought I was finished, I realized I had to have some sort of database (not only on localhost).
-After many many videos and tutorials on how to do it the way I wanted, came the realisation that I have to rebuild it.
+After many many videos and tutorials on how to do it the way I wanted, came the realisation that I had to rebuild it.
 
 So kept SCSS files, most of HTML files and everything else had to go away.
 
