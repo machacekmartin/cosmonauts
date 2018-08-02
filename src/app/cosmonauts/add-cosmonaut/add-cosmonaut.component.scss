@@ -1,0 +1,41 @@
+@import '../cosmonauts-modal-window.scss';
+
+//                       ________________
+// Styles for the button | +   COSMONAUT |
+//                       ¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨
+
+.add-button{
+    padding: 10px 15px;
+    border: solid 2px $light-gray;
+    cursor: pointer;
+    transition: 0.34s;
+    background-size: 200% 100%;
+    background-image: linear-gradient(to right, white 50%, $light-blue 50%);
+    &:hover{
+        border-color: $light-blue;
+        background-position: -100% 0;
+        color: white;
+        i{
+            color: white;
+        }
+    }
+    &:focus{
+        outline:none;
+    }
+    i{
+        transition: 0.34s;
+        padding-right: 15px;
+        color: $dark-gray;
+    }
+}
+@media only screen and (max-width: 424px){
+    .add-button{
+        background: $light-blue;
+        background-size: initial;
+        color: white;
+        border-color: $light-blue;
+        i{
+            color: white;
+        }
+    }
+}

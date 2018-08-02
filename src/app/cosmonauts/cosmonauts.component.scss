@@ -1,0 +1,137 @@
+@import '../../color-variables.scss';
+@import './cosmonauts-modal-window.scss';
+
+#cosmonauts{
+    margin-top: 100px;
+    max-width: 1300px;
+    padding: 0px 20px;
+    margin: 0 auto;
+    margin-top: 55px;
+    margin-bottom: 150px;
+    font-family: 'Roboto', sans-serif;
+
+    // Header and add cosmonaut button
+    .headings{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        color: $dark-gray;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        h3 {
+            font-weight: 300;
+            margin: 0;
+        }
+    }
+    
+    // Table for cosmonauts records - IMPORTANT THINGS
+    .table-cosmonauts{
+        box-shadow: 0px 8px 20px -2px $light-gray;
+        overflow: auto;
+        // Actual table styles
+        table{
+            max-width: 1260px;
+            width: 100%;
+            min-width: 865px;
+            // THEAD styles  -Firstname, Lastname and so on
+            .table-headers{
+                background: $lighter-gray;
+                font-weight: 600;
+                .item{
+                    display: inline;
+                    position: relative;
+                    &.superpower:after{
+                        content: '';
+                        background: url('../../assets/images/super.png');
+                        background-size: contain;
+                        position: absolute;
+                        right: -35px;
+                        top: 0px;
+                        width: 25px;
+                        height: 25px;
+                        display: block;
+                    }
+                }
+                td{
+                    border-bottom: solid 5px $light-gray;
+                }
+            }
+            // TBODY styles - John, Galaxynova (actual cosmonaut data + edit/delete buttons)
+            .table-content{ 
+                font-weight: 300;
+                tr{
+                    word-break: break-word;
+                    &:nth-child(even){
+                        background-color: $very-light-gray;
+                        td:last-child{
+                            border-left: solid 3px white; 
+                        }    
+                    }
+                    &:nth-child(odd){   
+                        td:last-child{
+                            border-left: solid 3px $very-light-gray;
+                        }    
+                    }
+                }       
+            }
+            // SHARED THEAD & TBODY styles - like font size, last columns styles..
+            .table-headers, 
+            .table-content{
+                font-size: 19px;
+                tr{
+                    .birthdate{
+                        min-width: 150px;
+                    }
+                    td:not(:last-child){
+                        padding: 22px 30px 20px 30px;
+                        max-width: 250px;
+                    }
+                    td:last-child{
+                        padding: 22px 10px 20px 10px;
+                        text-align: center;
+                        width: 125px;
+                        .edit-buttons{
+                            display:flex;
+                            flex-flow: row;
+                            justify-content: space-around;
+                            font-size: 26px;
+                            i{
+                                transition: 0.3s;
+                            }
+                            .icon-block{
+                                cursor: pointer;
+                                padding: 0px 10px;
+                                &:first-child{
+                                    color: #87CEFA;
+                                }
+                                &:last-child{
+                                    color: #E26262;
+                                }
+                                i{
+                                    transition: 0.3s;
+                                }
+                                &:hover > i{
+                                    transform: translateY(-3px) translateX(2px);
+                                    text-shadow: -5px 5px 5px $light-gray; 
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+    }
+}
+@media only screen and (max-width: 424px){
+    #cosmonauts{
+        .headings{
+            flex-flow: column;
+            align-items: flex-start;
+            h3{
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+// i know.. whoa.. so many curlies in a css

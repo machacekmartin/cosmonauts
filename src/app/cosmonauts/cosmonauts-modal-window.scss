@@ -1,0 +1,135 @@
+@import '../../color-variables.scss';
+
+
+// STYLES FOR MODAL WINDOW
+// SOME STYLES OVERWRITE BOOTSTRAPS'S INITIAL STYLES
+.modal-container{
+    font-family: 'Roboto', sans-serif;
+    .modal-header,
+    .modal-body,
+    .modal-footer{
+        padding: 18px 25px;
+    }
+    // Modal header styles - add/edit sign with icons
+    .modal-header{
+        background-color: $light-blue;
+        color: white;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        border-radius: 0;
+        .head-text{
+            display:flex;
+            align-items: center;
+            i{
+                margin-left: 5px;
+                font-size: 25px;
+            }
+        }
+        .closing{
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+    // Actual styling of inputs, validation colors popups
+    .modal-body{
+        padding: 25px 25px;
+        margin-bottom: 50px;
+        .form-group{
+            font-size: 20px;
+            label{
+                color: $very-dark-gray;
+                font-weight: 500;
+            }
+            .form-control{
+                border: solid 2px $lighter-gray;
+                background-color: $very-light-gray;
+                border-radius: 0;
+                font-weight: 300;
+                transition: 0.3s;
+                font-size: 20px;
+                &:focus{
+                    background-color: $very-light-gray;
+                    border-color: $light-gray;
+                    box-shadow: 0px 10px 5px -8px $light-gray;
+                    transform: translateY(-2px);
+                }
+                &.ng-invalid.ng-touched{
+                    border-right: solid 8px $light-red;
+                }
+                &.ng-valid.ng-touched.ng-dirty{
+                    border-right: solid 8px $light-blue;
+                }
+            }
+        }
+    }
+    // Styles only for modal which edits current cosmonauts - not for adding
+    .edit-modal-body{
+        .form-group{
+            border-bottom: solid 5px $very-light-gray;
+            .form-control{
+                border-color: white;
+                background-color: white;
+                &:focus{
+                    background-color: $very-light-gray;
+                    border-color: $lighter-gray;
+                }
+            }
+        }
+    }
+    // Footer of modal - Buttons like "Add Cosmonaut" (finishing button)
+    .modal-footer{
+        .complete-form{
+            text-transform: uppercase;
+            padding: 10px 15px;
+            background-color: $light-blue;
+            border: solid 2px $light-blue;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.34s;
+            &[disabled]{
+                background: $light-gray;
+                color: white;
+                border-color: $light-gray;
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+.delete-modal-container{
+    .modal-header{
+        background: $light-red;
+    }
+    .modal-body{
+        margin-bottom: 0;
+        .warning-list{
+            list-style-type: initial;
+            margin-left: 35px;
+        }
+    }
+    .modal-footer{
+        display: flex;
+        justify-content: space-between;
+        .complete-form{
+            background: $light-red;
+            border-color: $light-red;
+            &.cancel{
+                background: $light-gray;
+                border-color: $light-gray;
+            }
+        }
+
+    }
+}
+@media only screen and (max-width: 424px){
+    .modal-container{
+        .modal-header{
+            .head-text{
+                flex-flow: column;
+                align-items: flex-start;
+            }
+        }
+    }
+
+}

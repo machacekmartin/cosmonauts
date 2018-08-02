@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CosmonautsService } from '../cosmonauts.service';
 
 @Component({
-  selector: 'app-add-cosmonaut',
+  selector: 'add-cosmonaut',
   templateUrl: './add-cosmonaut.component.html',
   styleUrls: ['./add-cosmonaut.component.scss']
 })
-export class AddCosmonautComponent implements OnInit {
+export class AddCosmonautComponent {
 
-  constructor() { }
+  constructor(private modal: NgbModal, public service: CosmonautsService) { }
 
-  ngOnInit() {
-  }
-
-  openAddModal(){
-
+  openAddModal(modalWindow) {
+    return this.modal.open(modalWindow);
   }
 
 }

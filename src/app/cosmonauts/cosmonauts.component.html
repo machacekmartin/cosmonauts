@@ -1,36 +1,17 @@
-<form action="" #form="ngForm">
-  <div class="form-group">
-    <input type="text" name="firstname" [(ngModel)]="this.service.firstname">
-  </div>
-  <div class="form-group">
-    <input type="text" name="lastname" [(ngModel)]="this.service.lastname">
-  </div>
-  <div class="form-group">
-    <input type="text" name="birthdate" [(ngModel)]="this.service.birthdate">
-  </div>
-  <div class="form-group">
-    <input type="text" name="superpower" [(ngModel)]="this.service.superpower">
-  </div>
-  <button (click)="this.service.createCosmonaut(this.service.firstname, 
-  this.service.lastname, 
-  this.service.birthdate, 
-  this.service.superpower); 
-  this.form.reset()">Add</button>
-</form>
-
-
 <section id="cosmonauts">
+
   <!-- Top part of cosmonauts page - header and add button -->
   <header class="headings">
     <h3>Cosmonauts</h3>
+    <add-cosmonaut></add-cosmonaut>
   </header>
 
-  <!-- Here comes the table, thead with firname, lastname... tbody with actual cosmonauts content -->
+  <!-- Here comes the table, thead with firstname, lastname... tbody with actual cosmonauts content -->
   <div class="table-cosmonauts">
     <table>
       <thead class="table-headers">
         <tr>
-          <td *ngFor="let item of headers">
+          <td *ngFor="let item of this.service.headers">
             <p class="item {{item | lowercase}}"> {{ item }} </p>
           </td>
         </tr>
@@ -47,12 +28,14 @@
             {{ person.birthdate}}
           </td>
           <td class="superpower">
-            {{ person.superpower }}
+            {{ person.superpower}}
           </td>
           <td class="edit">
             <div class="edit-buttons">
-              <button (click)="editCosmonaut(person.id)"></button>
-              <div class="icon-block">
+              <div (click)="this.service.openModal(person.id, editCosmonaut); this.service.preFillForm(person.id); " class="icon-block">
+                <i class="far fa-edit"></i>
+              </div>
+              <div (click)="this.service.openModal(person.id, deleteCosmonaut)" class="icon-block">
                 <i class="far fa-trash-alt"></i>
               </div>
             </div>
@@ -62,3 +45,64 @@
     </table>
   </div>
 </section>
+
+
+<!-- this is for deleting cosmonauts -->
+<ng-template #deleteCosmonaut let-c="close" let-d="dismiss">
+  <div class="modal-container delete-modal-container">
+    <div class="modal-header">
+      <h5 class="modal-title" id="modal-basic-title">ARE YOU SURE?</h5>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete this cosmonauts from database? </p>
+      <ul class="warning-list">
+        <li>You wont be able to edit his information</li>
+        <li>You wont be able to see the cosmonaut in the database table</li>
+        <li>You cant reverse this step once you click delete</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="complete-form cancel" (click)="c('complete click')">Cancel</button>
+      <button type="button" class="complete-form" (click)="this.service.removeCosmonaut(this.service.personID); c('complete click')">Delete</button>
+    </div>
+  </div>
+</ng-template>
+
+<!-- for editing -->
+<ng-template #editCosmonaut let-c="close" let-d="dismiss">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="head-text">
+        <h5 class="modal-title" id="modal-basic-title">Edit existing cosmonaut</h5>
+        <i class="fas fa-rocket"></i>
+      </div>
+      <i class="fas fa-times closing" aria-label="Close" (click)="d('Cross click')"></i>
+    </div>
+    <div class="modal-body edit-modal-body">
+      <form #cosmonautsForm="ngForm" spellcheck="false">
+        <div class="form-group">
+          <label>Firstname *</label>
+          <input type="text" class="form-control" name="firstname" [(ngModel)]="this.service.personForEdit.firstname" required>
+        </div>
+        <div class="form-group">
+          <label>Lastname *</label>
+          <input type="text" class="form-control" name="lastname" [(ngModel)]="this.service.personForEdit.lastname" required>
+        </div>
+        <div class="form-group">
+          <label>Birthdate *</label>
+          <input type="string" class="form-control" name="birthdate" [(ngModel)]="this.service.personForEdit.birthdate" required>
+        </div>
+        <div class="form-group">
+          <label>* SUPERPOWEERR *</label>
+          <input type="text" class="form-control" name="superpower" [(ngModel)]="this.service.personForEdit.superpower" required>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button [disabled]="!cosmonautsForm.form.valid" class="complete-form" 
+        (click)="this.service.editCosmonaut(this.service.personID, cosmonautsForm.value); c('complete click')">
+          Update information
+      </button>
+    </div>
+  </div>
+</ng-template>
