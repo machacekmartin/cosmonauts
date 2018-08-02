@@ -1,0 +1,64 @@
+<form action="" #form="ngForm">
+  <div class="form-group">
+    <input type="text" name="firstname" [(ngModel)]="this.service.firstname">
+  </div>
+  <div class="form-group">
+    <input type="text" name="lastname" [(ngModel)]="this.service.lastname">
+  </div>
+  <div class="form-group">
+    <input type="text" name="birthdate" [(ngModel)]="this.service.birthdate">
+  </div>
+  <div class="form-group">
+    <input type="text" name="superpower" [(ngModel)]="this.service.superpower">
+  </div>
+  <button (click)="this.service.createCosmonaut(this.service.firstname, 
+  this.service.lastname, 
+  this.service.birthdate, 
+  this.service.superpower); 
+  this.form.reset()">Add</button>
+</form>
+
+
+<section id="cosmonauts">
+  <!-- Top part of cosmonauts page - header and add button -->
+  <header class="headings">
+    <h3>Cosmonauts</h3>
+  </header>
+
+  <!-- Here comes the table, thead with firname, lastname... tbody with actual cosmonauts content -->
+  <div class="table-cosmonauts">
+    <table>
+      <thead class="table-headers">
+        <tr>
+          <td *ngFor="let item of headers">
+            <p class="item {{item | lowercase}}"> {{ item }} </p>
+          </td>
+        </tr>
+      </thead>
+      <tbody class="table-content">
+        <tr *ngFor="let person of this.service.people">
+          <td class="firstname">
+            {{ person.firstname }}
+          </td>
+          <td class="lastname">
+            {{ person.lastname }}
+          </td>
+          <td class="birthdate">
+            {{ person.birthdate}}
+          </td>
+          <td class="superpower">
+            {{ person.superpower }}
+          </td>
+          <td class="edit">
+            <div class="edit-buttons">
+              <button (click)="editCosmonaut(person.id)"></button>
+              <div class="icon-block">
+                <i class="far fa-trash-alt"></i>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

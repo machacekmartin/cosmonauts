@@ -1,0 +1,141 @@
+@import '../../color-variables.scss';
+
+#menu{
+    background-color: $lighter-gray;
+    border-bottom: solid 10px $very-light-gray;
+    color: $dark-gray;
+    text-transform: uppercase;
+    .menu-list{
+        max-width: 1300px;
+        padding: 0px 20px;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+        align-items: center;  
+
+        // MENU ITEMS ARE NOT SETUP FOR HOVER EFFECT
+        // AS SOON AS THERE WOULD BE ROUTES AVAILABLE
+        // IT COULD BE DONE AS A "SELECTED" ITEM CLASS VIA JQUERY
+        .menu-item{
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            a {
+                display: flex; 
+                padding: 35px 40px; 
+            }
+        }
+        .menu-item.first{
+            a {
+                background: $light-blue;
+                color: white;
+                font-weight: 900;
+            }  
+        }
+        .logo{
+            margin-right: auto;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 22px;
+            z-index: 1;
+        }
+        // THOSE 2 LITTLE ROCKETS - Iam really not proud of this...
+        .logo::after{
+            background: url('../../assets/images/rockets.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            content: '';
+            display: flex;
+            position: absolute;
+            z-index: -1;
+            width: 100px;
+            height: 84px;
+            right: -60px;
+            top: -25px;
+         }
+    }
+}
+// Default styles for mobile divs but on large screen
+.open-menu, #menu-mobile{
+    display: none;
+}
+// THESE STYLES are for menu for mobile devices ONLY
+@media only screen and (max-width: 787px){
+    #menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .menu-list{
+            margin: 0;
+            .logo{
+                &:after{
+                    content: '';
+                    display: none;
+                }
+            }
+            .menu-item{
+                display: none;
+            }          
+        }   
+        .open-menu{
+            display: block;
+            font-size: 25px;
+            padding: 10px 20px;
+        } 
+    }
+    #menu-mobile{
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: white;
+        overflow-x: hidden;
+        transition: 0.5s;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        flex-flow: column;
+        color: $dark-gray;
+        box-shadow: -10px 0px 20px -10px $light-gray;
+        .closebtn{
+            font-size: 40px; 
+            padding: 0px 30px 30px 30px;   
+        }
+        .links{
+            font-size: 23px;
+            font-weight: 300;
+            width: 250px;
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 10px 30px;
+                transition: 0.5s;
+                position: relative;
+                &:before{
+                    display: block;
+                    content: '';
+                    transition: 0.5s;
+                    position: absolute;
+                    background: $dark-gray;
+                    left: 0;
+                    width: 10px;
+                    height: 1px;
+                }
+            }
+            a:hover{
+                box-shadow: inset 250px 0 0 0 $light-blue;
+                color: white;
+                &:before{
+                    width: 50px;
+                    background: white;
+                }
+            }
+        }
+    }
+}

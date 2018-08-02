@@ -1,0 +1,24 @@
+<header id="menu">
+  <ul class="menu-list">
+      <li class="logo">
+          {{ logo }}
+      </li>
+      <li class="menu-item" *ngFor="let item of menuItems; let first = first;" [class.first]="first">
+          <a href="">
+              {{ item }}
+          </a>
+      </li>
+  </ul>
+  <div class="open-menu">
+      <i class="fa fa-bars" (click)="openMenu()"></i>
+  </div>
+
+</header>
+<div id="menu-mobile">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeMenu()">&times;</a>
+  <div class="links">
+      <a href="" *ngFor="let item of menuItems">
+          {{ item }}
+      </a>
+  </div>
+</div>

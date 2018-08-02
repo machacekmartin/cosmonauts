@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import './color-variables.scss';
+
+//FONTS IMPORTED - MONTSERRAT & ROBOTO
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,800,800i,900,900i|Roboto:100,300,400,500,700,900');
+
+// GLOBAL STYLES - PADDING AND MARGIN: 0 ON EVERYTHING
+// SET UL LIST STYLE TYPE TO NOTHING 
+// ALSO, LINKS DONT HAVE UNDERLINE AND HAVE NORMAL COLOR
+*{
+    padding: 0;
+    margin: 0;
+}
+ul {
+    list-style-type: none;
+}
+a, a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+// this is for stupid bootstrap modal's generated base (ngb-modal-window and modal-dialog)
+// which is generated outside of app-root tag, which makes it impossible to style 
+//anywhere else except here. So here it is
+
+@media (min-width: 576px){
+    .modal-dialog{
+        max-width: 550px;
+    }
+}
+.modal-content{
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0px 10px 20px $dark-gray;
+    font-family: 'Roboto', sans-serif;
+}
