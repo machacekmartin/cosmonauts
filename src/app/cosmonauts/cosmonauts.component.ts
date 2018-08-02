@@ -11,6 +11,8 @@ export class CosmonautsComponent implements OnInit {
 
   constructor(private service: CosmonautsService) { }
   
+  // This is needed for the table data
+  // just calls the GET functions from the service, accessing firebase
   ngOnInit() {
     this.service.getHeaders();
     this.service.getCosmonauts();

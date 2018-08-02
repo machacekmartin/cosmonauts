@@ -13,6 +13,7 @@ import { CosmonautsComponent } from './cosmonauts/cosmonauts.component';
 import { CosmonautsService } from './cosmonauts/cosmonauts.service';
 import { AddCosmonautComponent } from './cosmonauts/add-cosmonaut/add-cosmonaut.component';
 import { MenuComponent } from './menu/menu.component';
+import { CopyrightComponent } from './copyright/copyright.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MenuComponent } from './menu/menu.component';
     CosmonautsComponent,
     AddCosmonautComponent,
     MenuComponent,
+    CopyrightComponent,
   ],
   imports: [
     BrowserModule,

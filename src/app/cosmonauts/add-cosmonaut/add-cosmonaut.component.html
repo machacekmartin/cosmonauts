@@ -1,3 +1,6 @@
+<!-- This is a modal for adding new person to the firebase
+    upon submitting the form, data is collected from the form and sent to addCosmonaut function in our SERVICE
+-->
 <ng-template #addCosmonaut let-c="close" let-d="dismiss">
   <div class="modal-container">
     <div class="modal-header">
@@ -13,23 +16,22 @@
           <label>Firstname *</label>
           <input type="text" class="form-control" name="firstname" [(ngModel)]="this.service.firstname" required>
         </div>
-        <div class="form-group" >
+        <div class="form-group">
           <label>Lastname *</label>
-          <input type="text" class="form-control" name="lastname" [(ngModel)]="this.service.lastname"  required>
+          <input type="text" class="form-control" name="lastname" [(ngModel)]="this.service.lastname" required>
         </div>
         <div class="form-group">
           <label>Birthdate *</label>
-          <input type="text" class="form-control" name="birthdate" [(ngModel)]="this.service.birthdate"  required>
+          <input type="text" class="form-control" name="birthdate" [(ngModel)]="this.service.birthdate" required>
         </div>
         <div class="form-group">
           <label>* SUPERPOWEERR *</label>
-          <input type="text" class="form-control" name="superpower" [(ngModel)]="this.service.superpower"  required>
+          <input type="text" class="form-control" name="superpower" [(ngModel)]="this.service.superpower" required>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button [disabled]="!cosmonautsForm.form.valid" class="complete-form" 
-        (click)="this.service.addCosmonaut(
+      <button [disabled]="!cosmonautsForm.form.valid" class="complete-form" (click)="this.service.addCosmonaut(
           this.service.firstname,
           this.service.lastname,
           this.service.birthdate,
@@ -40,4 +42,7 @@
     </div>
   </div>
 </ng-template>
-<button class="add-button" (click)="openAddModal(addCosmonaut)">  <i class="fas fa-plus"></i> COSMONAUT</button>
+
+<!-- Button for opening the modal -->
+<button class="add-button" (click)="openAddModal(addCosmonaut)">
+  <i class="fas fa-plus"></i> COSMONAUT</button>

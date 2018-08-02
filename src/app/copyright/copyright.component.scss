@@ -1,0 +1,20 @@
+@import '../../color-variables.scss';
+
+// really not much here..
+
+#copyright{
+    background-color: $lighter-gray;
+    border-top: solid 10px $very-light-gray;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    p {
+        margin: 0;
+        padding: 2px 5px;
+        font-weight: 300;
+        font-size: 14px;
+    }
+
+}
